@@ -12,8 +12,8 @@ type Groupie struct {
 	Image string `json:"image"`
 	Name string `json:"name"`
 	Members []string `json:"members"`
-	CreationDate int `json:"creationDate`
-	FirstAlbum string `json:firstAlbum`
+	CreationDate int `json:"creationDate"`
+	FirstAlbum string `json:"firstAlbum"`
 }
 
 func importAPI() []Groupie {
@@ -41,4 +41,6 @@ func importAPI() []Groupie {
 
 	return groupes
 }
+
+
 
