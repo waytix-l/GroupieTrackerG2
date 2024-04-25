@@ -6,71 +6,11 @@ import (
 	"path/filepath"
 	"text/template"
 
-	"github.com/waytix-l/HangmanWeb/config"
-	"github.com/waytix-l/HangmanWeb/hangman"
+	"GroupieTracker/config"
 )
 
-var h hangman.HangmanData
-
 func Home(w http.ResponseWriter, r *http.Request) {
-	h.HangmanInit()
 	renderTemplate(w, r, "home", nil)
-}
-
-func Contact(w http.ResponseWriter, r *http.Request) {
-	renderTemplate(w, r, "contact", nil)
-}
-func Algerie1(w http.ResponseWriter, r *http.Request) {
-	renderTemplate(w, r, "algerie1", nil)
-}
-func Algerie2(w http.ResponseWriter, r *http.Request) {
-	renderTemplate(w, r, "algerie2", nil)
-}
-func Algerie3(w http.ResponseWriter, r *http.Request) {
-	renderTemplate(w, r, "algerie3", nil)
-}
-func Algerie4(w http.ResponseWriter, r *http.Request) {
-	renderTemplate(w, r, "algerie4", nil)
-}
-
-func Hoth(w http.ResponseWriter, r *http.Request) {
-	h.Gessed_letters = r.FormValue("letter")
-	fmt.Println(h.Gessed_letters)
-	h.Hangman()
-	renderTemplate(w, r, "hoth", hangman.HangmanData{Word: h.Word, Mot_secret: h.Mot_secret, ListMotSecret: h.ListMotSecret, Win: h.Win, Lost: h.Lost, Try :h.Try})
-}
-func HothVideo(w http.ResponseWriter, r *http.Request) {
-	renderTemplate(w, r, "hothVideo", nil)
-}
-
-func Corruscant(w http.ResponseWriter, r *http.Request) {
-	h.Gessed_letters = r.FormValue("letter")
-	fmt.Println(h.Gessed_letters)
-	h.Hangman()
-	renderTemplate(w, r, "corruscant", hangman.HangmanData{Word: h.Word, Mot_secret: h.Mot_secret, ListMotSecret: h.ListMotSecret, Win: h.Win, Lost: h.Lost, Try :h.Try})
-}
-func CorruscantVideo(w http.ResponseWriter, r *http.Request) {
-	renderTemplate(w, r, "corruscantVideo", nil)
-}
-
-func Korriban(w http.ResponseWriter, r *http.Request) {
-	h.Gessed_letters = r.FormValue("letter")
-	fmt.Println(h.Gessed_letters)
-	h.Hangman()
-	renderTemplate(w, r, "korriban", hangman.HangmanData{Word: h.Word, Mot_secret: h.Mot_secret, ListMotSecret: h.ListMotSecret, Win: h.Win, Lost: h.Lost, Try :h.Try})
-}
-func KorribanVideo(w http.ResponseWriter, r *http.Request) {
-	renderTemplate(w, r, "korribanVideo", nil)
-}
-
-func Mustafar(w http.ResponseWriter, r *http.Request) {
-	h.Gessed_letters = r.FormValue("letter")
-	fmt.Println(h.Gessed_letters)
-	h.Hangman()
-	renderTemplate(w, r, "mustafar", hangman.HangmanData{Word: h.Word, Mot_secret: h.Mot_secret, ListMotSecret: h.ListMotSecret, Win: h.Win, Lost: h.Lost, Try :h.Try})
-}
-func MustafarVideo(w http.ResponseWriter, r *http.Request) {
-	renderTemplate(w, r, "mustafarVideo", nil)
 }
 
 var appConfig *config.Config
