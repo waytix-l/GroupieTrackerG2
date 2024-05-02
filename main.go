@@ -16,6 +16,8 @@ func main() {
 	fmt.Println(APIdata)
 	fmt.Println()
 	fmt.Println(APIdata[0])
+	fmt.Println()
+	fmt.Println(search("SO", APIdata))
 	
 
 	templateCache, err := handlers.CreateTemplateCache()

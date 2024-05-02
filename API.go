@@ -5,6 +5,8 @@ import (
 	"fmt"
 	"io/ioutil"
 	"net/http"
+	"regexp"
+	"strconv"
 )
 
 type Groupie struct {
@@ -28,7 +30,6 @@ func importAPI() []Groupie {
 		fmt.Println(err.Error())
 	}
 
-	// defer res.Body.Close()
 	body, readErr := ioutil.ReadAll(res.Body)
 	if readErr != nil {
 		fmt.Println(readErr.Error())
@@ -37,10 +38,18 @@ func importAPI() []Groupie {
 	var groupes []Groupie
 	json.Unmarshal(body, &groupes)
 
-	//formattedData := formatJSON(body)
-
 	return groupes
 }
 
-
-
+func search(word string, api []Groupie) []string {
+	regex := regexp.MustCompile(word)
+	tab := []string{}
+	for index, groupe := range api {
+		for _, match := range regex.FindAllString(groupe.Name, -1) {
+			a := match + " found at index " + strconv.Itoa(index)
+			tab = append(tab, a)
+		}
+	}
+	return tab
+	
+}
