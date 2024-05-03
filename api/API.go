@@ -1,4 +1,4 @@
-package main
+package api
 
 import (
 	"encoding/json"
@@ -51,5 +51,5 @@ func search(word string, api []Groupie) []string {
 		}
 	}
 	return tab
-	
 }
+

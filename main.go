@@ -3,9 +3,9 @@ package main
 import (
 	"fmt"
 	"net/http"
-
 	"GroupieTracker/config"
 	"GroupieTracker/internal/handlers"
+	"GroupieTracker/api"
 )
 
 func main() {
