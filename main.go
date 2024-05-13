@@ -1,24 +1,23 @@
 package main
 
 import (
-	"fmt"
-	"net/http"
+	"GroupieTracker/api"
 	"GroupieTracker/config"
 	"GroupieTracker/internal/handlers"
-	"GroupieTracker/api"
+	"fmt"
+	"net/http"
 )
 
 func main() {
 	var appConfig config.Config
 
-	APIdata := importAPI()
+	APIdata := api.ImportAPI()
 
 	fmt.Println(APIdata)
 	fmt.Println()
 	fmt.Println(APIdata[0])
 	fmt.Println()
-	fmt.Println(search("SO", APIdata))
-	
+	fmt.Println(api.Search("S", APIdata))
 
 	templateCache, err := handlers.CreateTemplateCache()
 
@@ -30,12 +29,12 @@ func main() {
 	http.Handle("/assets/", http.StripPrefix("/assets/", fs))
 
 	appConfig.TemplateCache = templateCache
-	appConfig.Port = ":8877"
+	appConfig.Port = ":8080"
 
 	handlers.CreateTemplates(&appConfig)
 
 	http.HandleFunc("/", handlers.Home)
 
-	fmt.Println("(htpp://localhost:8877) - Server started on port ", appConfig.Port)
+	fmt.Println("(http://localhost:8080) - Server started on port ", appConfig.Port)
 	http.ListenAndServe(appConfig.Port, nil)
 }

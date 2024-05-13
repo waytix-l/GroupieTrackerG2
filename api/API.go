@@ -6,19 +6,18 @@ import (
 	"io/ioutil"
 	"net/http"
 	"regexp"
-	"strconv"
 )
 
 type Groupie struct {
-	ID int `json:"id"`
-	Image string `json:"image"`
-	Name string `json:"name"`
-	Members []string `json:"members"`
-	CreationDate int `json:"creationDate"`
-	FirstAlbum string `json:"firstAlbum"`
+	ID           int      `json:"id"`
+	Image        string   `json:"image"`
+	Name         string   `json:"name"`
+	Members      []string `json:"members"`
+	CreationDate int      `json:"creationDate"`
+	FirstAlbum   string   `json:"firstAlbum"`
 }
 
-func importAPI() []Groupie {
+func ImportAPI() []Groupie {
 	API_url := "https://groupietrackers.herokuapp.com/api/artists"
 	req, err := http.NewRequest("GET", API_url, nil)
 	if err != nil {
@@ -41,15 +40,13 @@ func importAPI() []Groupie {
 	return groupes
 }
 
-func search(word string, api []Groupie) []string {
+func Search(word string, api []Groupie) []Groupie {
 	regex := regexp.MustCompile(word)
-	tab := []string{}
-	for index, groupe := range api {
-		for _, match := range regex.FindAllString(groupe.Name, -1) {
-			a := match + " found at index " + strconv.Itoa(index)
-			tab = append(tab, a)
+	tab := []Groupie{}
+	for _, groupe := range api {
+		for i := 0; i < len(regex.FindAllString(groupe.Name, -1)); i++ {
+			tab = append(tab, groupe)
 		}
 	}
 	return tab
 }
-

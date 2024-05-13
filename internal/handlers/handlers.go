@@ -1,16 +1,21 @@
 package handlers
 
 import (
+	"GroupieTracker/api"
+	"GroupieTracker/config"
 	"fmt"
 	"net/http"
 	"path/filepath"
+	"strconv"
 	"text/template"
-
-	"GroupieTracker/config"
 )
 
+var Filters api.Filters
+
 func Home(w http.ResponseWriter, r *http.Request) {
-	renderTemplate(w, r, "home", nil)
+	Filters.MinCreationDate, Filters.Err = strconv.Atoi(r.FormValue("CreationDateMin"))
+	Filters.MaxCreationDate, Filters.Err = strconv.Atoi(r.FormValue("CreationDateMax"))
+	renderTemplate(w, r, "home", api.Filters{MinCreationDate: Filters.MinCreationDate, MaxCreationDate: Filters.MaxCreationDate})
 }
 
 var appConfig *config.Config
