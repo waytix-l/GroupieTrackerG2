@@ -15,6 +15,10 @@ type Groupie struct {
 	Members      []string `json:"members"`
 	CreationDate int      `json:"creationDate"`
 	FirstAlbum   string   `json:"firstAlbum"`
+	ConcertLoc   ConcertLocation
+}
+type ConcertLocation struct {
+	Loc []string `json:locations`
 }
 
 func ImportAPI() []Groupie {
@@ -38,6 +42,31 @@ func ImportAPI() []Groupie {
 	json.Unmarshal(body, &groupes)
 
 	return groupes
+}
+
+func ImportConcert(api []Groupie) {
+	ConcertURL := "https://groupietrackers.herokuapp.com/api/locations"
+	req, err := http.NewRequest("GET", ConcertURL, nil)
+	if err != nil {
+		fmt.Println(err.Error())
+	}
+
+	res, err := http.DefaultClient.Do(req)
+	if err != nil {
+		fmt.Println(err.Error())
+	}
+
+	body, readErr := ioutil.ReadAll(res.Body)
+	if readErr != nil {
+		fmt.Println(readErr.Error())
+	}
+
+	var concert []ConcertLocation
+	json.Unmarshal(body, &concert)
+
+	// for _, groupie := range api {
+	// 	groupie.ConcertLoc = concert
+	// }
 }
 
 func Search(word string, api []Groupie) []Groupie {

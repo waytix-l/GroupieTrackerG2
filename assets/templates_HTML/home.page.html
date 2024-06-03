@@ -5,16 +5,34 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="assets/css/style.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poetsen+One&display=swap');
+    </style>
 </head>
 <body>
     <header id="head">
         <ul>
-            <li><a href=""><h3>HOME</h3></a></li>
-            <li><a href=""><h3>CONTACT</h3></a></li>
-            <li><a href=""><h3>ABOUT</h3></a></li>
-            <li><a href=""><h3>SHOP</h3></a></li>
+            <li><a href=""><h3 class="headerText">HOME</h3></a></li>
+            <li><a href=""><h3 class="headerText">CONTACT</h3></a></li>
+            <li><a href=""><h3 class="headerText">ABOUT</h3></a></li>
+            <li><a href=""><h3 class="headerText">SHOP</h3></a></li>
         </ul>
     </header>
+
+
+
+
+    <div class="listenMusic">
+        <button id="musicButton" onclick="expandButton()">
+            <img src="assets/image/music.png" id="musicImage" alt="">
+            <div id="imgListenMusic"></div>
+            <p id="titleListenMusic">Song Name</p>
+        </button>
+        <p class="musicText" id="aera">Listen to music ?</p>
+    </div>
+
+
+
 
     <form action="/" method="post" id="FilterForm">
 
@@ -26,6 +44,15 @@
 
     {{ .MinCreationDate }}
     {{ .MaxCreationDate }}
+
+    <div id="card">
+        <img id="image" src="{{ .Image }}" alt="">
+        <div id="glassLink"></div>
+        <div id="cardBot">
+            <p id="textCard">{{ .Name }}</p>
+        </div>
+    </div>
+    
 
     <script type="module" src="assets/js/head.js"></script>
 

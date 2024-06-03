@@ -3,7 +3,6 @@ package main
 import (
 	"GroupieTracker/api"
 	"GroupieTracker/config"
-	"GroupieTracker/internal/handlers"
 	"fmt"
 	"net/http"
 )
@@ -17,9 +16,19 @@ func main() {
 	fmt.Println()
 	fmt.Println(APIdata[0])
 	fmt.Println()
-	fmt.Println(api.Search("S", APIdata))
+	//fmt.Println(api.Search("S", APIdata))
+	//fmt.Println()
+	//fmt.Println(APIdata[0].Image)
+	//fmt.Println()
+	fmt.Println(api.CreationDate(1970, APIdata))
+	fmt.Println()
+	fmt.Println(api.FirstAlbum(1970, APIdata))
+	fmt.Println()
+	fmt.Println(api.MembersAmount(7, APIdata))
 
-	templateCache, err := handlers.CreateTemplateCache()
+	
+
+	templateCache, err := CreateTemplateCache()
 
 	if err != nil {
 		panic(err)
@@ -31,9 +40,9 @@ func main() {
 	appConfig.TemplateCache = templateCache
 	appConfig.Port = ":8080"
 
-	handlers.CreateTemplates(&appConfig)
+	CreateTemplates(&appConfig)
 
-	http.HandleFunc("/", handlers.Home)
+	http.HandleFunc("/", Home)
 
 	fmt.Println("(http://localhost:8080) - Server started on port ", appConfig.Port)
 	http.ListenAndServe(appConfig.Port, nil)

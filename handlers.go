@@ -1,4 +1,4 @@
-package handlers
+package main
 
 import (
 	"GroupieTracker/api"
@@ -7,15 +7,22 @@ import (
 	"net/http"
 	"path/filepath"
 	"strconv"
+	"strings"
 	"text/template"
 )
 
 var Filters api.Filters
 
-func Home(w http.ResponseWriter, r *http.Request) {
+func Home (w http.ResponseWriter, r *http.Request) {
+
+	APIdata := api.ImportAPI()
+
 	Filters.MinCreationDate, Filters.Err = strconv.Atoi(r.FormValue("CreationDateMin"))
 	Filters.MaxCreationDate, Filters.Err = strconv.Atoi(r.FormValue("CreationDateMax"))
-	renderTemplate(w, r, "home", api.Filters{MinCreationDate: Filters.MinCreationDate, MaxCreationDate: Filters.MaxCreationDate})
+	Filters.Image = APIdata[0].Image
+	Filters.Name = APIdata[0].Name
+	Filters.Name = strings.ToUpper(Filters.Name)
+	renderTemplate(w, r, "home", api.Filters{MinCreationDate: Filters.MinCreationDate, MaxCreationDate: Filters.MaxCreationDate, Image: Filters.Image, Name: Filters.Name})
 }
 
 var appConfig *config.Config

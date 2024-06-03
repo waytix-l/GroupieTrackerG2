@@ -10,6 +10,9 @@ type Filters struct {
 	MembersAmount []int
 
 	Err error
+
+	Image string
+	Name string
 }
 
 func (f *Filters) InitFilters() {
@@ -19,4 +22,5 @@ func (f *Filters) InitFilters() {
 	f.MaxFirstAlbumDate = 2024
 	f.MembersAmount = []int{}
 	f.Err = nil
+	f.Image = ""
 }
