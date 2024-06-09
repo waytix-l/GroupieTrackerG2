@@ -2,11 +2,17 @@ package api
 
 import "strconv"
 
-func CreationDate(date int, api []Groupie) []Groupie {
+func CreationDate(date1 int, date2 int, api []Groupie) []Groupie {
 	tab := []Groupie{}
 	for _, groupie := range api {
-		if (groupie.CreationDate == date) {
-			tab = append(tab, groupie)
+		if date1 < date2 {
+			if (groupie.CreationDate >= date1 && groupie.CreationDate <= date2) {
+				tab = append(tab, groupie)
+			}
+		} else if date1 > date2 {
+			if (groupie.CreationDate <= date1 && groupie.CreationDate >= date2) {
+				tab = append(tab, groupie)
+			}
 		}
 	}
 	return tab;

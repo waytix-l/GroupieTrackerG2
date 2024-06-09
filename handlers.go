@@ -31,6 +31,14 @@ func Artist(w http.ResponseWriter, r *http.Request) {
 	for _, Groupie := range APIdata {
 		GroupieList = append(GroupieList, Groupie)
 	}
+
+	creationDateChecked := r.FormValue("CreationDateCheckbox")
+	if creationDateChecked == "on" {
+		minValueCD, _ := strconv.Atoi(r.FormValue("CreationDateMin"))
+		maxValueCD, _ := strconv.Atoi(r.FormValue("CreationDateMax"))
+
+		GroupieList = api.CreationDate(minValueCD, maxValueCD, GroupieList)
+	}
 	
 	renderTemplate(w, r, "artist", api.Filters{Groupies: GroupieList})
 }

@@ -20,7 +20,7 @@ func main() {
 	//fmt.Println()
 	//fmt.Println(APIdata[0].Image)
 	//fmt.Println()
-	fmt.Println(api.CreationDate(1970, APIdata))
+	fmt.Println(api.CreationDate(1970, 1990, APIdata))
 	fmt.Println()
 	fmt.Println(api.FirstAlbum(1970, APIdata))
 	fmt.Println()

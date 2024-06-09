@@ -20,7 +20,22 @@
         </ul>
     </header>
 
-    <div class="filter"></div>
+    <div class="filter">
+        <form action="/artist" method="post" id="FilterForm">
+
+            <input type="checkbox" name="CreationDateCheckbox">CreationDate
+
+            <div class="slider-track"></div>
+            <input type="range" id="CreationDateMin" name="CreationDateMin" min="1950" max="2024" value="1950">
+            <input type="range" id="CreationDateMax" name="CreationDateMax" min="1950" max="2024" value="2024">
+
+            <span id="CDMinRangeValue">1950</span>
+            <span id="CDMaxRangeValue">2024</span>
+
+            <input type="submit" name="Valid">
+    
+        </form>
+    </div>
 
     <button id="filterButton" onclick="">Filter</button>
 

@@ -9,8 +9,7 @@ var musicTextBackground = document.getElementById('musicTextBackground');
 
 var filterButton = document.getElementById('filterButton');
 var filters = document.getElementsByClassName('filter')[0];
-
-
+var filterForm = document.getElementById('FilterForm');
 
 
 document.addEventListener('scroll', function () {
@@ -60,9 +59,50 @@ filterButton.onclick = filterBand;
 
 function filterBand() {
     filters.id = "filterAfter";
+    filterForm.id = "FilterFormAfter";
 }
 
+// Slider
 
+// window.onload = function () {
+//     slideOne();
+//     slideTwo();
+// };
+
+var sliderOne = document.getElementById('CreationDateMin');
+var sliderTwo = document.getElementById('CreationDateMax');
+
+var displayValOne = document.getElementById('CDMinRangeValue');
+var displayValTwo = document.getElementById('CDMaxRangeValue');
+
+var minGap = 0;
+var sliderMinValue = 1950;
+var sliderMaxValue = 2024;
+
+let sliderTrack = document.querySelector(".slider-track");
+
+
+/*function slideOne() {
+    // if (parseInt(sliderTwo.value) - parseInt(sliderOne.value) <= minGap) {
+    //   sliderOne.value = parseInt(sliderTwo.value) - minGap;
+    // }
+    displayValOne.textContent = sliderOne.value;
+    console.log('sliderOneChanged');
+}*/
+
+/*function slideTwo() {
+    displayValTwo.innerHTML = sliderTwo.value;
+    console.log('sliderTwoChanged');
+}*/
+
+sliderOne.addEventListener('input', function() {
+    displayValOne.textContent = sliderOne.value;
+    console.log('sliderOneChanged');
+});
+sliderTwo.addEventListener('input', function() {
+    displayValTwo.textContent = sliderTwo.value;
+    console.log('sliderTwoChanged');
+});
 
 /* See More Button */
 
