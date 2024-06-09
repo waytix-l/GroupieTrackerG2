@@ -17,6 +17,8 @@ type Groupie struct {
 	FirstAlbum   string   `json:"firstAlbum"`
 	ConcertLoc   ConcertLocation
 }
+
+
 type ConcertLocation struct {
 	Loc []string `json:locations`
 }

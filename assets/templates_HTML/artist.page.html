@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Artist</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poetsen+One&display=swap');
+    </style>
+</head>
+
+<body class="artist">
+    <header id="head">
+        <ul>
+            <li><a href="/"><h3 class="headerText">HOME</h3></a></li>
+            <li><a href="/artist"><h3 class="headerText">ARTISTS</h3></a></li>
+            <li><a href=""><h3 class="headerText">CONCERTS</h3></a></li>
+            <li><a href=""><h3 class="headerText">DATES</h3></a></li>
+        </ul>
+    </header>
+
+    <div class="filter"></div>
+
+    <button id="filterButton" onclick="">Filter</button>
+
+    <div class="wrapper">
+
+        {{ range $index, $element := .Groupies }}
+
+            <div class="card">
+                <img class="imgCard" src="{{ .Image }}" alt="">
+                <h3 class="groupeName">{{ .Name }}</h3>
+                <h4 class="creationDate">Creation date : {{ .CreationDate }}</h4>
+
+                <button class="cardButton" id="{{$index}}">See More</button>
+
+            </div>
+
+            
+        
+        {{ end }}
+
+    </div>
+
+    
+
+    {{ range $index, $element := .Groupies }}
+
+        <div class="popUP">
+            <div class="popUPcard">
+                <button class="closePopUp">X</button>
+                <h3 class="groupeName" id="popUP">{{ .Name }}</h3>
+                <h4>
+                {{ range $index, $element := .Members }}
+                    {{$element}},
+                {{ end }}
+                </h4>
+                <h4>Creation Date : {{ .CreationDate }}</h4>
+                <h4>First Album : {{ .FirstAlbum }}</h4>
+                <h4>Concert Locations : {{ .ConcertLoc }}</h4>
+            </div>
+        </div>
+
+    {{ end }}
+
+    
+    <div class="listenMusic">
+        <div id="musicTextBackground"></div>
+        <button id="musicButton" onclick="expandButton()">
+            <img src="assets/image/music.png" id="musicImage" alt="">
+            <div id="imgListenMusic"></div>
+            <p id="titleListenMusic">Song Name</p>
+        </button>
+        <p class="musicText" id="aera">Listen to music ?</p>
+    </div>
+    
+    <script type="module" src="assets/js/head.js"></script>
+
+</body>
+</html>

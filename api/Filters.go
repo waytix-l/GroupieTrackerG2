@@ -7,12 +7,13 @@ type Filters struct {
 	MinFirstAlbumDate int
 	MaxFirstAlbumDate int
 
-	MembersAmount []int
-
 	Err error
 
 	Image string
 	Name string
+
+	Groupies []Groupie
+	ArtistName []string
 }
 
 func (f *Filters) InitFilters() {
@@ -20,7 +21,8 @@ func (f *Filters) InitFilters() {
 	f.MaxCreationDate = 2024
 	f.MinFirstAlbumDate = 1950
 	f.MaxFirstAlbumDate = 2024
-	f.MembersAmount = []int{}
 	f.Err = nil
 	f.Image = ""
+	f.Groupies = []Groupie{}
+	f.ArtistName = []string{}
 }

@@ -13,7 +13,7 @@ import (
 
 var Filters api.Filters
 
-func Home (w http.ResponseWriter, r *http.Request) {
+func Home(w http.ResponseWriter, r *http.Request) {
 
 	APIdata := api.ImportAPI()
 
@@ -23,6 +23,16 @@ func Home (w http.ResponseWriter, r *http.Request) {
 	Filters.Name = APIdata[0].Name
 	Filters.Name = strings.ToUpper(Filters.Name)
 	renderTemplate(w, r, "home", api.Filters{MinCreationDate: Filters.MinCreationDate, MaxCreationDate: Filters.MaxCreationDate, Image: Filters.Image, Name: Filters.Name})
+}
+
+func Artist(w http.ResponseWriter, r *http.Request) {
+	APIdata := api.ImportAPI()
+	GroupieList := []api.Groupie{}
+	for _, Groupie := range APIdata {
+		GroupieList = append(GroupieList, Groupie)
+	}
+	
+	renderTemplate(w, r, "artist", api.Filters{Groupies: GroupieList})
 }
 
 var appConfig *config.Config

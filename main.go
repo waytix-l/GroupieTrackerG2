@@ -26,8 +26,6 @@ func main() {
 	fmt.Println()
 	fmt.Println(api.MembersAmount(7, APIdata))
 
-	
-
 	templateCache, err := CreateTemplateCache()
 
 	if err != nil {
@@ -43,6 +41,7 @@ func main() {
 	CreateTemplates(&appConfig)
 
 	http.HandleFunc("/", Home)
+	http.HandleFunc("/artist", Artist)
 
 	fmt.Println("(http://localhost:8080) - Server started on port ", appConfig.Port)
 	http.ListenAndServe(appConfig.Port, nil)
