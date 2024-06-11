@@ -39,6 +39,8 @@ func Artist(w http.ResponseWriter, r *http.Request) {
 
 		GroupieList = api.CreationDate(minValueCD, maxValueCD, GroupieList)
 	}
+
+	GroupieList = api.Search(r.FormValue("search"), GroupieList)
 	
 	renderTemplate(w, r, "artist", api.Filters{Groupies: GroupieList})
 }

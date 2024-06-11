@@ -75,9 +75,12 @@ func Search(word string, api []Groupie) []Groupie {
 	regex := regexp.MustCompile(word)
 	tab := []Groupie{}
 	for _, groupe := range api {
-		for i := 0; i < len(regex.FindAllString(groupe.Name, -1)); i++ {
+		if (regex.FindString(groupe.Name) == word) {
 			tab = append(tab, groupe)
 		}
+		// for i := 0; i < len(regex.FindAllString(groupe.Name, -1)); i++ {
+		// 	tab = append(tab, groupe)
+		// }
 	}
 	return tab
 }

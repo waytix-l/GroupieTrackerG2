@@ -20,25 +20,19 @@
         </ul>
     </header>
 
-    <form action="/" method="post" id="FilterForm">
 
-        <input type="range" name="CreationDateMin" min="1950" max="2024">
-        <input type="range" name="CreationDateMax" min="1950" max="2024">
-        <input type="submit" name="Valid">
-
-    </form>
-
-    {{ .MinCreationDate }}
-    {{ .MaxCreationDate }}
-
-    <div id="card">
-        <img id="image" src="{{ .Image }}" alt="">
-        <div id="glassLink"></div>
-        <div id="cardBot">
-            <p id="textCard">{{ .Name }}</p>
+    <div class="caroussel">
+        <div class="cc1">
+            <h4 class="cctitle">ARTISTS</h4>
+        </div>
+        <div class="cc2">
+            <h4 class="cctitle">CONCERTS</h4>
+        </div>
+        <div class="cc3">
+            <h4 class="cctitle">DATES</h4>
         </div>
     </div>
-    
+
 
     <div class="listenMusic">
         <div id="musicTextBackground"></div>
