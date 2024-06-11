@@ -55,9 +55,82 @@ h3 {
     color: #AF8260;
 }
 
+#header1::before {
+    opacity: 1;
+    content: "";
+    position: absolute;
+    height: 4px;
+    width: 80px;
+    transform: translateX(-12%) scaleX(0%) ;
+    top: 80px;
+    background-color: #AF8260;
+    transition: all 0.5s;
+}
+
+#header1:hover::before {
+    transform: translateX(-12%) scaleX(100%);
+    transition: all 0.5s;
+}
+
+#header2::before {
+    opacity: 1;
+    content: "";
+    position: absolute;
+    height: 4px;
+    width: 95px;
+    transform: translateX(-7%) scaleX(0%) ;
+    top: 80px;
+    background-color: #AF8260;
+    transition: all 0.5s;
+}
+
+#header2:hover::before {
+    transform: translateX(-7%) scaleX(100%);
+    transition: all 0.5s;
+}
+
+#header3::before {
+    opacity: 1;
+    content: "";
+    position: absolute;
+    height: 4px;
+    width: 120px;
+    transform: translateX(-4%) scaleX(0%) ;
+    top: 80px;
+    background-color: #AF8260;
+    transition: all 0.5s;
+}
+
+#header3:hover::before {
+    transform: translateX(-4%) scaleX(100%);
+    transition: all 0.5s;
+}
+
+#header4::before {
+    opacity: 1;
+    content: "";
+    position: absolute;
+    height: 4px;
+    width: 80px;
+    transform: translateX(-10%) scaleX(0%) ;
+    top: 80px;
+    background-color: #AF8260;
+    transition: all 0.5s;
+}
+
+#header4:hover::before {
+    transform: translateX(-10%) scaleX(100%);
+    transition: all 0.5s;
+}
+
 .textHeaderFixed {
     transition: all 0.5s;
     color: #E4C59E !important;
+}
+
+.textHeaderFixed::before {
+    transition: all 0.5s;
+    background-color: #E4C59E !important;
 }
 
 a {
@@ -135,7 +208,7 @@ a {
 }
 
 #musicButton {
-    z-index: 2;
+    z-index: 10;
     position: relative;
     top: 15%;
     left: 5%;
@@ -149,7 +222,7 @@ a {
 }
 
 #musicButtonExpanded2 {
-    z-index: 2;
+    z-index: 10;
     position: relative;
     top: -45%;
     left: -5%;
@@ -166,7 +239,7 @@ a {
 }
 
 #musicButtonExpanded {
-    z-index: 2;
+    z-index: 10;
     position: relative;
     top: 15%;
     left: 5%;
@@ -364,7 +437,7 @@ input[type="checkbox"]:checked + .checkboxLabel:before {
     width: 100%;
     height: 5px;
     position: absolute;
-    margin: auto;
+    margin: 0;
     top: 0;
     bottom: 0;
     border-radius: 5px;
@@ -378,8 +451,8 @@ input[type="range"] {
     height: 10px;
     outline: none;
     position: absolute;
-    margin: auto;
-    top: 50px;
+    margin: 50px;
+    top: 0px;
     bottom: 0;
     background-color: #E4C59E;
     pointer-events: none;
@@ -440,6 +513,11 @@ input[type="range"]:active::-webkit-slider-thumb {
   z-index: 20;
   background-color: #ffffff;
   border: 1px solid #E4C59E;
+}
+
+.membersAmountTitle {
+    margin: 0;
+    padding: 0;
 }
 
 
@@ -603,17 +681,39 @@ input[type="range"]:active::-webkit-slider-thumb {
     background-color: #d2ae81;
 }
 
+
+
 .cctitle {
-    transform: translateY(150px);
-    font-size: 80px;
-    color: #E4C59E;
+    position: relative;
+    margin: 0;
+    padding: 0;
+    height: 100%;
     text-align: center;
-    justify-content: center;
     align-content: center;
-    vertical-align: middle;
-    align-items: center;
-    background: radial-gradient(#212121 0% #21212100 100%);
+    font-size: 80px;
+    color: #6e523c;
 }
+
+
+.ccbutton {
+    position: relative;
+    appearance: none;
+    background-color: #6e523c;
+    border: 2px solid #2c2c2c;
+    border-radius: 7px;
+    height: 50px;
+    width: 170px;
+    color: #2c2c2c;
+    font-size: 16px;
+    transition: all 0.2s;
+}
+
+.ccbutton:hover {
+    background-color: #AF8260;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
 
 .cc1 {
     z-index: 3;
@@ -627,11 +727,6 @@ input[type="range"]:active::-webkit-slider-thumb {
     background-position: center;
     background-size: 66%;
     animation: caroussel1 18s ease-in-out infinite;
-    text-align: center;
-    justify-content: center;
-    align-content: center;
-    vertical-align: middle;
-    align-items: center;
 }
 
 .cc2 {
@@ -652,7 +747,11 @@ input[type="range"]:active::-webkit-slider-thumb {
     position: absolute;
     width: 100%;
     height: 700px;
-    background-color: rgb(0, 255, 0);
+    background-color: #1d1d1d;
+    background-image: radial-gradient(transparent 0%, transparent 40%, #1d1d1d 70%), url("../image/faisceau-lumineux-foule-gens.jpg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 66%;
     animation: caroussel3 18s ease-in-out 12s infinite;
 }
 

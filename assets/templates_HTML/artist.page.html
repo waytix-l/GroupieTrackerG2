@@ -15,8 +15,8 @@
         <ul>
             <li><a href="/"><h3 class="headerText">HOME</h3></a></li>
             <li><a href="/artist"><h3 class="headerText">ARTISTS</h3></a></li>
-            <li><a href=""><h3 class="headerText">CONCERTS</h3></a></li>
-            <li><a href=""><h3 class="headerText">DATES</h3></a></li>
+            <li><a href="/concert"><h3 class="headerText">CONCERTS</h3></a></li>
+            <li><a href="/date"><h3 class="headerText">DATES</h3></a></li>
         </ul>
     </header>
 
@@ -30,7 +30,6 @@
                     <h4>Creation Date</h4>
                 </div>
                 
-    
                 <div class="slider-track"></div>
                 <input type="range" id="CreationDateMin" name="CreationDateMin" min="1950" max="2024" value="1950">
                 <input type="range" id="CreationDateMax" name="CreationDateMax" min="1950" max="2024" value="2024">
@@ -38,6 +37,28 @@
                 <span id="CDMinRangeValue">1950</span>
                 <span id="CDMaxRangeValue">2024</span>
     
+                
+
+                <div class="membersAmount">
+                    <h4 class="membersAmountTitle">Members Amount : </h4>
+
+                    <div class="checkboxCD">
+                        <input type="checkbox" name="membersAmountCheckbox" class="checkbox">
+                        <label for="checkbox" class="checkboxLabel"></label>
+                    </div>
+
+                    <input type="radio" name="members" value="1">1
+                    <input type="radio" name="members" value="2">2
+                    <input type="radio" name="members" value="3">3
+                    <input type="radio" name="members" value="4">4
+                    <input type="radio" name="members" value="5">5
+                    <input type="radio" name="members" value="6">6
+                    <input type="radio" name="members" value="7">7
+                </div>
+
+                <h4>First Album Date</h4>
+                <input type="number" name="FirstAlbum" id="FirstAlbum">
+
                 <input type="submit" name="Valid">
 
             </div>

@@ -11,20 +11,15 @@ func main() {
 	var appConfig config.Config
 
 	APIdata := api.ImportAPI()
+	ConcertData := api.ImportConcert()
+
+	// for _, v := range APIdata {
+	// 	fmt.Println(v)
+	// }
 
 	fmt.Println(APIdata)
 	fmt.Println()
-	fmt.Println(APIdata[0])
-	fmt.Println()
-	//fmt.Println(api.Search("S", APIdata))
-	//fmt.Println()
-	//fmt.Println(APIdata[0].Image)
-	//fmt.Println()
-	fmt.Println(api.CreationDate(1970, 1990, APIdata))
-	fmt.Println()
-	fmt.Println(api.FirstAlbum(1970, APIdata))
-	fmt.Println()
-	fmt.Println(api.MembersAmount(7, APIdata))
+	fmt.Println(ConcertData)
 
 	templateCache, err := CreateTemplateCache()
 
@@ -42,6 +37,8 @@ func main() {
 
 	http.HandleFunc("/", Home)
 	http.HandleFunc("/artist", Artist)
+	http.HandleFunc("/concert", Concert)
+	http.HandleFunc("/date", Date)
 
 	fmt.Println("(http://localhost:8080) - Server started on port ", appConfig.Port)
 	http.ListenAndServe(appConfig.Port, nil)

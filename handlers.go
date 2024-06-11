@@ -28,21 +28,50 @@ func Home(w http.ResponseWriter, r *http.Request) {
 func Artist(w http.ResponseWriter, r *http.Request) {
 	APIdata := api.ImportAPI()
 	GroupieList := []api.Groupie{}
+
 	for _, Groupie := range APIdata {
 		GroupieList = append(GroupieList, Groupie)
 	}
 
+	firstAlbumDate := r.FormValue("FirstAlbum")
+	fmt.Println(firstAlbumDate)
+	membersAmountCheckbox := r.FormValue("membersAmountCheckbox")
+	fmt.Println(membersAmountCheckbox)
 	creationDateChecked := r.FormValue("CreationDateCheckbox")
+	fmt.Println(creationDateChecked)
+
+	if firstAlbumDate != "" {
+		firstAlbum, _ := strconv.Atoi(firstAlbumDate)
+		GroupieList = api.FirstAlbum(firstAlbum, GroupieList)
+	}
+	
+	if membersAmountCheckbox == "on" {
+		membersAmount := r.FormValue("members")
+		if membersAmount != "" {
+			members, _ := strconv.Atoi(membersAmount)
+			GroupieList = api.MembersAmount(members, GroupieList)
+		}
+	}
+
+	
+
 	if creationDateChecked == "on" {
 		minValueCD, _ := strconv.Atoi(r.FormValue("CreationDateMin"))
 		maxValueCD, _ := strconv.Atoi(r.FormValue("CreationDateMax"))
-
 		GroupieList = api.CreationDate(minValueCD, maxValueCD, GroupieList)
 	}
 
 	GroupieList = api.Search(r.FormValue("search"), GroupieList)
 	
 	renderTemplate(w, r, "artist", api.Filters{Groupies: GroupieList})
+}
+
+func Concert(w http.ResponseWriter, r *http.Request) {
+	renderTemplate(w, r, "concert", api.Filters{})
+}
+
+func Date(w http.ResponseWriter, r *http.Request) {
+	renderTemplate(w, r, "date", api.Filters{})
 }
 
 var appConfig *config.Config

@@ -13,23 +13,29 @@
 <body>
     <header id="head">
         <ul>
-            <li><a href="/"><h3 class="headerText">HOME</h3></a></li>
-            <li><a href="/artist"><h3 class="headerText">ARTISTS</h3></a></li>
-            <li><a href=""><h3 class="headerText">CONCERTS</h3></a></li>
-            <li><a href=""><h3 class="headerText">DATES</h3></a></li>
+            <li><a href="/"><h3 class="headerText" id="header1">HOME</h3></a></li>
+            <li><a href="/artist"><h3 class="headerText" id="header2">ARTISTS</h3></a></li>
+            <li><a href="/concert"><h3 class="headerText" id="header3">CONCERTS</h3></a></li>
+            <li><a href="/date"><h3 class="headerText" id="header4">DATES</h3></a></li>
         </ul>
     </header>
 
 
     <div class="caroussel">
         <div class="cc1">
-            <h4 class="cctitle">ARTISTS</h4>
+            <h4 class="cctitle">ARTISTS<br>
+                <button class="ccbutton" onclick="window.location.href='/artist'">DISCOVER</button>
+            </h4>
         </div>
         <div class="cc2">
-            <h4 class="cctitle">CONCERTS</h4>
+            <h4 class="cctitle">CONCERTS<br>
+                <button class="ccbutton" onclick="window.location.href='/concert'">DISCOVER</button>
+            </h4>
         </div>
         <div class="cc3">
-            <h4 class="cctitle">DATES</h4>
+            <h4 class="cctitle">DATES<br>
+                <button class="ccbutton" onclick="window.location.href='/date'">DISCOVER</button>
+            </h4>
         </div>
     </div>
 
