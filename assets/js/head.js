@@ -11,6 +11,7 @@ var filterButton = document.getElementById('filterButton');
 var filters = document.getElementsByClassName('filter')[0];
 var filterForm = document.getElementById('FilterForm');
 
+var audio = new Audio('../audio/Queen - We Will Rock You (Official Video).mp3')
 
 document.addEventListener('scroll', function () {
     if (window.scrollY >= 5) {
@@ -27,10 +28,25 @@ document.addEventListener('scroll', function () {
     }
 });
 
-function expandButton() {
+// not working //
 
+function playSound(url) {
+    console.log("play")
+    var ourAudio = document.createElement('audio'); // Create a audio element using the DOM
+    ourAudio.style.display = "none"; // Hide the audio element
+    ourAudio.src = url; // Set resource to our URL
+    ourAudio.play();
+    ourAudio.onended = function() {
+      this.remove(); // Remove when played.
+    };
+    document.body.appendChild(ourAudio);
+  }
+
+
+function expandButton() {
+    playSound("../audio/Queen - We Will Rock You (Official Video).mp3");
     musicButton.id = 'musicButtonExpanded';
-    musicLogo.id = 'musicImage2'
+    musicLogo.id = 'musicImage2';
     setTimeout(() => { 
         musicButton.id = 'musicButtonExpanded2';
         musicButton.disabled = true;
@@ -132,3 +148,5 @@ function seeMorePopUp(index) {
 function closePopUp(index) {
     popUps[index].style.display = 'none';
 }
+
+
